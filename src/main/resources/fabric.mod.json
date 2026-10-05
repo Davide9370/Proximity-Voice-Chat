@@ -10,8 +10,8 @@
 	"license": "MIT",
 	"contact": {
 		"homepage": "https://modrinth.com/mod/proximityvoice",
-		"sources": "https://github.com/Davi9370/ProximityVoice",
-		"issues": "https://github.com/Davi9370/ProximityVoice/issues"
+		"sources": "https://github.com/Davi9370/Proximity-Voice-Chat",
+		"issues": "https://github.com/Davi9370/Proximity-Voice-Chat/issues"
 	},
 	"environment": "*",
 	"entrypoints": {
