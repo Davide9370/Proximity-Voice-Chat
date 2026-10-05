@@ -8,6 +8,7 @@
 		"Davide Gabani"
 	],
 	"license": "MIT",
+	"icon": "assets/proximityvoice/icon.png",
 	"contact": {
 		"homepage": "https://modrinth.com/mod/proximity-voice",
 		"sources": "https://github.com/Davide9370/Proximity-Voice-Chat",
