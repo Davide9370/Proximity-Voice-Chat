@@ -46,7 +46,7 @@ The mod ends up in `build/libs/proximityvoice-1.0.0+mc1.21.11.jar` (ignore the `
 **No Java on your PC?** Upload this folder to a GitHub repository. The included
 `.github/workflows/build.yml` builds it automatically; download the jar from the *Actions* tab → *Artifacts*.
 
-Versions used : Minecraft 1.21.11, Fabric Loader 0.19.5,
+Versions used: Minecraft 1.21.11, Fabric Loader 0.18.0 (minimum),
 Fabric API 0.141.6+1.21.11, Loom 1.15.5, Gradle 9.7.1.
 
 ## Installing
