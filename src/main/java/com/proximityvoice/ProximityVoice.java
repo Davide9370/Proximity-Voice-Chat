@@ -32,11 +32,11 @@ public class ProximityVoice implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		// client -> server
-		PayloadTypeRegistry.serverboundPlay().register(MicAudioPayload.TYPE, MicAudioPayload.CODEC);
-		PayloadTypeRegistry.serverboundPlay().register(ClientStatePayload.TYPE, ClientStatePayload.CODEC);
+		PayloadTypeRegistry.playC2S().register(MicAudioPayload.TYPE, MicAudioPayload.CODEC);
+		PayloadTypeRegistry.playC2S().register(ClientStatePayload.TYPE, ClientStatePayload.CODEC);
 		// server -> client
-		PayloadTypeRegistry.clientboundPlay().register(SpeakerAudioPayload.TYPE, SpeakerAudioPayload.CODEC);
-		PayloadTypeRegistry.clientboundPlay().register(ServerSettingsPayload.TYPE, ServerSettingsPayload.CODEC);
+		PayloadTypeRegistry.playS2C().register(SpeakerAudioPayload.TYPE, SpeakerAudioPayload.CODEC);
+		PayloadTypeRegistry.playS2C().register(ServerSettingsPayload.TYPE, ServerSettingsPayload.CODEC);
 
 		VoiceServer.init();
 		LOGGER.info("Proximity Voice loaded (protocol {})", PROTOCOL_VERSION);

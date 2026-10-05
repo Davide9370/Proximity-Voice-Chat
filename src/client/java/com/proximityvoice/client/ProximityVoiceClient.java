@@ -1,6 +1,6 @@
 package com.proximityvoice.client;
 
-import org.lwjgl.sdl.SDLScancode;
+import org.lwjgl.glfw.GLFW;
 
 import com.proximityvoice.ProximityVoice;
 import com.proximityvoice.client.audio.MicrophoneThread;
@@ -9,13 +9,13 @@ import com.proximityvoice.network.ServerSettingsPayload;
 import com.proximityvoice.network.SpeakerAudioPayload;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
 
 public class ProximityVoiceClient implements ClientModInitializer {
@@ -30,8 +30,8 @@ public class ProximityVoiceClient implements ClientModInitializer {
 		CONFIG = ClientConfig.load();
 
 		KeyMapping.Category category = KeyMapping.Category.register(ProximityVoice.id("main"));
-		SETTINGS_KEY = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.proximityvoice.settings", SDLScancode.SDL_SCANCODE_J, category));
-		PUSH_TO_TALK_KEY = KeyMappingHelper.registerKeyMapping(new KeyMapping(PTT_KEY_NAME, SDLScancode.SDL_SCANCODE_V, category));
+		SETTINGS_KEY = KeyBindingHelper.registerKeyBinding(new KeyMapping("key.proximityvoice.settings", GLFW.GLFW_KEY_J, category));
+		PUSH_TO_TALK_KEY = KeyBindingHelper.registerKeyBinding(new KeyMapping(PTT_KEY_NAME, GLFW.GLFW_KEY_V, category));
 
 		ClientPlayNetworking.registerGlobalReceiver(ServerSettingsPayload.TYPE, (payload, context) -> VoiceSession.onServerSettings(payload));
 		ClientPlayNetworking.registerGlobalReceiver(SpeakerAudioPayload.TYPE, (payload, context) -> VoiceSession.onSpeakerAudio(payload));
@@ -46,7 +46,7 @@ public class ProximityVoiceClient implements ClientModInitializer {
 
 	private static void tick(Minecraft client) {
 		while (SETTINGS_KEY.consumeClick()) {
-			client.gui.setScreen(new VoiceSettingsScreen(null));
+			client.setScreen(new VoiceSettingsScreen(null));
 		}
 
 		VoiceSession.setPushToTalkHeld(PUSH_TO_TALK_KEY.isDown());
@@ -56,13 +56,13 @@ public class ProximityVoiceClient implements ClientModInitializer {
 			VoiceSession.updateListener(player.getX(), player.getEyeY(), player.getZ(), player.getYRot());
 		}
 
-		if (client.gui.screen() instanceof VoiceSettingsScreen screen) {
+		if (client.screen instanceof VoiceSettingsScreen screen) {
 			screen.refreshLiveInfo();
 		}
 	}
 
 	/** Small status text next to the hotbar: "Talking", "Mic off", "Speaker off". */
-	private static void renderHud(GuiGraphicsExtractor graphics) {
+	private static void renderHud(GuiGraphics graphics) {
 		if (!VoiceSession.isActive()) return;
 		Minecraft mc = Minecraft.getInstance();
 		if (mc.player == null) return;
@@ -87,6 +87,6 @@ public class ProximityVoiceClient implements ClientModInitializer {
 
 		int x = graphics.guiWidth() / 2 + 98;
 		int y = graphics.guiHeight() - 14;
-		graphics.text(mc.font, text, x, y, color);
+		graphics.drawString(mc.font, text, x, y, color);
 	}
 }

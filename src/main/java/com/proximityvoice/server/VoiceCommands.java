@@ -7,11 +7,10 @@ import java.util.List;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.proximityvoice.ProximityVoice;
-import net.fabricmc.fabric.api.permission.v1.PermissionPredicates;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.permissions.PermissionLevel;
 
 /**
  * /voice status  - who has voice chat
@@ -37,7 +36,7 @@ final class VoiceCommands {
 					return 1;
 				}))
 				.then(literal("reload")
-						.requires(PermissionPredicates.require(ProximityVoice.id("command.reload"), PermissionLevel.GAMEMASTERS))
+						.requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
 						.executes(ctx -> {
 							VoiceServer.reload(ctx.getSource().getServer());
 							ctx.getSource().sendSuccess(() -> Component.literal("Proximity Voice config reloaded."), true);
