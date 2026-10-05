@@ -8,6 +8,11 @@
 		"Davide Gabani"
 	],
 	"license": "MIT",
+	"contact": {
+		"homepage": "https://modrinth.com/mod/proximityvoice",
+		"sources": "https://github.com/Davi9370/ProximityVoice",
+		"issues": "https://github.com/Davi9370/ProximityVoice/issues"
+	},
 	"environment": "*",
 	"entrypoints": {
 		"main": [
