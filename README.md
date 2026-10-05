@@ -1,4 +1,6 @@
-# Proximity Voice (Fabric, Minecraft 26.3)
+# Proximity Voice (Fabric, Minecraft 1.21.11)
+
+> **Versions:** this branch (`mc-1.21.11`) is the build for **Minecraft 1.21.11**. The build for **Minecraft 26.3** is on the [`main` branch](https://github.com/Davide9370/Proximity-Voice-Chat/tree/main). Server and clients must use the build for the same Minecraft version.
 
 Proximity voice chat similar to Simple Voice Chat, with one big difference:
 **the voice audio travels inside the normal Minecraft connection** (custom payload packets),
@@ -25,11 +27,11 @@ audio stream, so some client-side code is always required (Simple Voice Chat wor
 Bedrock clients can't load Fabric mods, so Bedrock players can't use the voice chat itself, but
 **Geyser/Floodgate players are fully compatible**: the server never sends them voice packets, and they
 are detected (via the Floodgate or Geyser API, or the Floodgate UUID format) to show a friendly message.
-Make sure you use a Geyser build that supports Java 26.3.
+Make sure you use a Geyser build that supports Minecraft 1.21.11.
 
 ## Building the .jar
 
-You need **JDK 25** (for example Microsoft Build of OpenJDK 25 or Eclipse Temurin 25).
+You need **JDK 21** (for example Microsoft Build of OpenJDK 21 or Eclipse Temurin 21).
 
 ```
 # Windows
@@ -39,17 +41,17 @@ gradlew.bat build
 ./gradlew build
 ```
 
-The mod ends up in `build/libs/proximityvoice-1.0.0.jar` (ignore the `-sources` jar).
+The mod ends up in `build/libs/proximityvoice-1.0.0+mc1.21.11.jar` (ignore the `-sources` jar).
 
 **No Java on your PC?** Upload this folder to a GitHub repository. The included
 `.github/workflows/build.yml` builds it automatically; download the jar from the *Actions* tab → *Artifacts*.
 
-Versions used (from the official Fabric example mod for 26.3): Minecraft 26.3, Fabric Loader 0.19.5,
-Fabric API 0.161.0+26.3, Loom 1.18-SNAPSHOT, Gradle 9.7.1.
+Versions used : Minecraft 1.21.11, Fabric Loader 0.19.5,
+Fabric API 0.141.6+1.21.11, Loom 1.15.5, Gradle 9.7.1.
 
 ## Installing
 
-1. Put `proximityvoice-1.0.0.jar` **and** Fabric API in the server's `mods/` folder.
+1. Put `proximityvoice-1.0.0+mc1.21.11.jar` **and** Fabric API in the server's `mods/` folder.
 2. Every Java player who wants voice puts the same two jars in their `.minecraft/mods/` folder.
 3. Start the server once; the config is created at `config/proximityvoice/server.properties`.
 
@@ -57,8 +59,7 @@ Fabric API 0.161.0+26.3, Loom 1.18-SNAPSHOT, Gradle 9.7.1.
 
 Example files with all defaults are in `config-examples/proximityvoice/`.
 
-**Server** – `config/proximityvoice/server.properties` (reload with `/voice reload`, needs op level 2 or the
-permission `proximityvoice:command.reload`):
+**Server** – `config/proximityvoice/server.properties` (reload with `/voice reload`, needs op level 2):
 
 | Option | Default | Meaning |
 |---|---|---|
