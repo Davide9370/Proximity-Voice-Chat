@@ -1,0 +1,26 @@
+{
+	"schemaVersion": 1,
+	"id": "proximityvoice",
+	"version": "${version}",
+	"name": "Proximity Voice",
+	"description": "Proximity voice chat that travels through the normal Minecraft connection. No extra port needed. Press J for voice settings.",
+	"authors": [
+		"Davide Gabani"
+	],
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.proximityvoice.ProximityVoice"
+		],
+		"client": [
+			"com.proximityvoice.client.ProximityVoiceClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
