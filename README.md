@@ -1,5 +1,7 @@
 # Proximity Voice (Fabric, Minecraft 26.3)
 
+> **Versions:** this branch (`main`) is the build for **Minecraft 26.3**. The build for **Minecraft 1.21.11** is on the [`mc-1.21.11` branch](https://github.com/Davide9370/Proximity-Voice-Chat/tree/mc-1.21.11). Server and clients must use the build for the same Minecraft version.
+
 Proximity voice chat similar to Simple Voice Chat, with one big difference:
 **the voice audio travels inside the normal Minecraft connection** (custom payload packets),
 so the server does **not** need a second UDP port. If players can join your server, voice works.
@@ -25,7 +27,7 @@ audio stream, so some client-side code is always required (Simple Voice Chat wor
 Bedrock clients can't load Fabric mods, so Bedrock players can't use the voice chat itself, but
 **Geyser/Floodgate players are fully compatible**: the server never sends them voice packets, and they
 are detected (via the Floodgate or Geyser API, or the Floodgate UUID format) to show a friendly message.
-Make sure you use a Geyser build that supports Java 26.3.
+Make sure you use a Geyser build that supports Minecraft 26.3.
 
 ## Building the .jar
 

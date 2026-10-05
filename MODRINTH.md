@@ -28,7 +28,7 @@ A vanilla Minecraft client has no way to record a microphone or play a live audi
 voice must install the mod (Simple Voice Chat works the same way). Bedrock clients can't load Fabric mods, so
 Bedrock players can't use the voice chat itself, but Geyser/Floodgate players can join the server without issues:
 the server never sends them voice packets and shows them a friendly message instead.
-Make sure you use a Geyser build that supports Java 26.3.
+Make sure you use a Geyser build that supports Minecraft 26.3.
 
 ## Installing
 
@@ -37,7 +37,7 @@ Make sure you use a Geyser build that supports Java 26.3.
 3. Every Java player who wants voice puts the same two files in their `.minecraft/mods/` folder.
 4. Start the server once; the config is created at `config/proximityvoice/server.properties`.
 
-Server and clients must run the same mod version.
+Server and clients must run the same mod version, built for the same Minecraft version (this file is for **Minecraft 26.3**).
 
 ## Server config
 
